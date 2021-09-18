@@ -20,20 +20,19 @@
                 <li>Keep you focused on your work and prevent distractions</li>
                 <li>and more!</li>
             </ul>
-            <p>Click <a href="#input_form"> here</a>to get started!</p>
         </div>
         
         <form id="input_form">  
-            <label for="taskName">Name of Reminder</label><br>
-            <label><input 
-                type="Text" 
-                id="taskName" 
-                onblur="if(this.value==''){this.value='DefaultValue'}"></label><br>
-            <label><textarea rows="5" cols="50">Short description of task / To dos</textarea> <br>
+            <input type="text" id="taskName" placeholder="Enter task here">
+            <label><textarea rows="5" cols="50" placeholder="Short description of task / To dos"></textarea></label> 
+            <label for="hours">Estimated amount of hours to complete it: </label>
+            <input type="number" id="hours" min="1" max="10000">
             <label><input type="date" id="taskDate"></label>
             <label><input type="time" id="taskTime"></label>
             <label><input type="button" class="button" id="createTaskBtn" value="Create Task"></input></label>
         </form>
+
+
         <table id="eventsTable">
             <tr>
                 <th>Reminder Name</th>

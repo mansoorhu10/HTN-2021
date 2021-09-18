@@ -1,7 +1,9 @@
+
 eventsTable = document.querySelector("#eventsTable");
 createTaskBtn = document.querySelector("#createTaskBtn");
 taskDate = document.querySelector("#taskDate");
 taskTime = document.querySelector("#taskTime");
+taskName = document.querySelector("#taskName");
 
 let id = 0;
 let qwer = [];
@@ -18,17 +20,22 @@ function Event(id, eventName, date, time){
 }
 
 function newEvent(){
-    let eventA = new Event(id, taskName.value, taskDate.value, taskTime.value);
-    qwer.push(eventA);
-    displayTask(eventA);
+
+    let newEvent = new Event(id, taskName.value, taskDate.value, taskTime.value);
+    qwer.push(newEvent);
+    displayTask(newEvent);
     id++;
 }
+
+
 
 
 
 function displayTask(newEvent){
     table = document.querySelector("#eventsTable");
 
+    let newRowID = "event" + newEvent.id;
+    console.log(newRowID);
     let newRow = table.insertRow();
     newRow.setAttribute("id", newRowID);
 
@@ -49,16 +56,29 @@ function displayTask(newEvent){
     newButton.innerHTML = "Delete Task";
     deleteTaskBtn.appendChild(newButton);
     let stringID = (String) (newEvent.id);
+    console.log(stringID);
     deleteTaskBtn.setAttribute("id", stringID);
-    deleteTaskBtn.addEventListener("click", clearRow(id, newRowID));
+    deleteTaskBtn.addEventListener('click', click_value);
 
-
+    function click_value(){
+        let idNum = Number(this.id);
+        if(idNum == 0){
+            alert("Error");
+        }else{
+            eventsTable.deleteRow(idNum + 1);
+            const index = qwer.indexOf(idNum);
+            qwer.splice
+        }
+        // for(let i = 0; i < qwer.length; i++){
+        //     if(qwer[i].id > idNum){
+                
+        //         console.log(qwer[i].id + "on the bottom");
+        //     }
+        // }
+        id = id - 1;
+    }
 }
 
-function clearRow(id){
-    newRowID.deleteRow(id);
-
-}
 
 
 
