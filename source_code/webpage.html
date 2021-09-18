@@ -5,13 +5,41 @@
         <meta charset="utf-8">
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
         <link href="style.css" rel = "stylesheet">
-
-        <title></title>
-        <script src="webpage.js"></script>
+        <title>Insert title</title>
+        <script src="webpage.js" defer></script>
+    </head>
     <body>
         <div>
+            <h1>
+                <em>insert title here</em>
+            </h1>
+            <p>Welcome to <em>insert name here</em> , a service that helps you plan your workload. It can: </p>
+            <ul>
+                <li>Organize your projects in one place</li>
+                <li>Help you develop a schedule to finish everything on time</li>
+                <li>Keep you focused on your work and prevent distractions</li>
+                <li>and more!</li>
+            </ul>
+            <p>Click <a href="#input_form"> here</a>to get started!</p>
         </div>
         
+        <form id="input_form">  
+            <label for="taskName">Name of Reminder</label><br>
+            <label><input 
+                type="Text" 
+                id="taskName" 
+                onblur="if(this.value==''){this.value='DefaultValue'}"></label><br>
+            <label><textarea rows="5" cols="50">Short description of task / To dos</textarea> <br>
+            <label><input type="date" id="taskDate"></label>
+            <label><input type="time" id="taskTime"></label>
+            <label><input type="button" class="button" id="createTaskBtn" value="Create Task"></input></label>
+        </form>
+        <table id="eventsTable">
+            <tr>
+                <th>Reminder Name</th>
+                <th>date</th>
+                <th>time</th>
+            </tr>
+        </table>
     </body>
-</head>
 </html>
