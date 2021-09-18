@@ -1,0 +1,19 @@
+{
+    "name": "Productivity App",
+    "description": "An app that lets you schedule tasks",
+    "browser_action": {
+        "default_title": "Organize yourself!",
+        "default_popup": "popup.html"
+    },
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+    "permissions": [
+        "tabs",
+        "storage",
+        "<all_urls>"
+    ]
+}
