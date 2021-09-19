@@ -1,7 +1,7 @@
 html {
     font-size: 10px;
     font-family: 'Roboto', sans-serif;
-    background-image: url("https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YmFja2dyb3VuZCUyMGltYWdlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60");
+    background-color: #8FDDE7;
 }
 
 label {
@@ -21,21 +21,25 @@ p, li {
 body {
     width: 60%;
     margin: 0 auto;
-    background-color: aquamarine;
+    background-color: #B6E5D8;
     padding: 0px 20px 20px 20px;
 }
-
+.button:hover{
+    background-color: #4CAF50;
+    color: white;
+    
+}
 .button {
-    color: azure;
-    background-color: lightgreen;
+    transition-duration: 0.4s;
+    color: black;
+    border: 2px solid #4CAF50;
+    background-color: white;
     text-align: center;
     cursor: pointer;
     display: inline-block;
+
 }
 
-button:hover {
-    background-color: darkgreen;
-}
 
 input[type=text] {
     border: 1px solid black;

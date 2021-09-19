@@ -7,7 +7,7 @@ eventDes = document.querySelector("#eventDes");
 
 let id = 1;
 globalStorage = [];
-let qwer = [];
+let tableStorage = [];
 
 const headingRow = document.createElement("tr");
 headingRow.setAttribute("id", "heading");
@@ -25,10 +25,9 @@ headingRow.appendChild(reminder);
 headingRow.appendChild(date);
 headingRow.appendChild(time);
 headingRow.appendChild(shortDes);
-qwer.push(headingRow);
+tableStorage.push(headingRow);
 
 let task_list = {};
-
 
 createTaskBtn.addEventListener("click", newEvent);
 
@@ -40,18 +39,20 @@ function Event(id, eventName, date, time, eventDes){
     this.time = time;
 }
 
-
 function newEvent(){
-    let newEvent = new Event(id, taskName.value, taskDate.value, taskTime.value, eventDes.value);
-    globalStorage.push(newEvent);
-    displayTask(newEvent);
-
-    getGlobals();
-
-    id++;
+    if(taskName.value == ' ' || taskDate.value == ' ' || taskTime.value == ' '){
+        let newEvent = new Event(id, taskName.value, taskDate.value, taskTime.value, eventDes.value);
+        globalStorage.push(newEvent);
+        displayTask(newEvent);
+    
+        getGlobals();
+    
+        id++;
+    } else{
+        alert("Please enter a value before creating a task")
+    }
+    
 }
-
-
 
 function displayTask(newEvent){
     table = document.querySelector("#eventsTable");
@@ -62,7 +63,7 @@ function displayTask(newEvent){
     newRow.classList.add("task-row");
     console.log(newRow);
     console.log(newRow.getAttribute("id"));
-    qwer.push(newRow);
+    tableStorage.push(newRow);
 
     let eventNameCol = newRow.insertCell();
     eventNameCol.appendChild(document.createTextNode(newEvent.eventName));
@@ -93,11 +94,11 @@ function displayTask(newEvent){
         globalStorage[idNum] = "null";
         
 
-        qwer = qwer.filter((e) => `event${idNum}` !== e.getAttribute("id"));
+        tableStorage = tableStorage.filter((e) => `event${idNum}` !== e.getAttribute("id"));
         const tableTarget = document.querySelector("#tableTarget");
         removeAllChildNodes(tableTarget);
-        for(let i = 0; i < qwer.length; i++){
-            tableTarget.appendChild(qwer[i]);
+        for(let i = 0; i < tableStorage.length; i++){
+            tableTarget.appendChild(tableStorage[i]);
         }
     }
 }
