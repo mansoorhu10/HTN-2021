@@ -6,7 +6,6 @@ html {
 
 label {
     display: block;
-
 }
 
 h1 {
@@ -22,7 +21,7 @@ p, li {
 body {
     width: 60%;
     margin: 0 auto;
-    background-color: #c49a12;
+    background-color: aquamarine;
     padding: 0px 20px 20px 20px;
 }
 

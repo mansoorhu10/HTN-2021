@@ -45,6 +45,9 @@ function newEvent(){
     let newEvent = new Event(id, taskName.value, taskDate.value, taskTime.value, eventDes.value);
     globalStorage.push(newEvent);
     displayTask(newEvent);
+
+    getGlobals();
+
     id++;
 }
 
@@ -108,14 +111,41 @@ function removeAllChildNodes(parent) {
 
 // globalStorage[i].date or .time or .eventName
 
+let globalEventData = [];
+let globalDateData = [];
+let globalTimeData = [];
+
+//let globalValues = {globalEventData, globalDateData, globalTimeData};
+
 
 function getGlobals () {
     for (let i = 0; i < globalStorage.length; i++){
-        if(globalStorage[i] != isNull){
-            
+        if(globalStorage[i] != null) {
+            globalEventData[i] = globalStorage[i].eventName; 
         }
     }
+
+    for (let i = 0; i < globalStorage.length; i++){
+        if(globalStorage[i] != null) {
+            globalDateData[i] = globalStorage[i].date; 
+        }
+    }
+
+    for (let i = 0; i < globalStorage.length; i++){
+        if(globalStorage[i] != null) {
+            globalTimeData[i] = globalStorage[i].time; 
+        }
+    }
+
+    globalValues = {
+        eventName: globalEventData,
+        date: globalDateData,
+        time: globalTimeData
+    };
+    
+    chrome.storage.sync.set(globalValues, function() {
+        console.log('Values are set to ' + globalEventData + " and " + globalDateData + " and " + globalTimeData);
+    });
+
 }
-
-
 

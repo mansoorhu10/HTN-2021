@@ -1,5 +1,12 @@
-console.log("Background test in progress...");
 
+let calcButton = document.querySelector("#calcButton");
+calcButton.addEventListener('click', test);
+
+function test(){
+    console.log("hi button works!")
+}
+
+function calc(){
 function currentTimeCalculator(UNIX_timestamp){ //UNIX_timestamp = Date.now(); This accounts for your timezone automatically too
     var current_time = new Date(UNIX_timestamp);
     return current_time;
@@ -29,6 +36,9 @@ function timeConverter(total_time_sec){ //call this function to convert into day
     
     var sec = total_time_sec;
 
+    if(days < 2){
+        
+    }
     return date + " day(s) " + hour + " hour(s) " + min + " minute(s) " + sec + " second(s)"; 
 }
 
@@ -71,13 +81,11 @@ if(task_name.length == due_date.length){ //if statement checks if the 2 lists ar
         }
     }  
 }
-   
+
 else{
     console.log('Uneven list lengths')
 }
-
-console.log(urgency_list);
-
+}
 
 chrome.runtime.onInstalled.addListener((reason) => {
     if (reason === chrome.runtime.OnInstalledReason.INSTALL) {
