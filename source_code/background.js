@@ -40,46 +40,42 @@ function taskAdder(task_name, due_date, time_difference){
     return temp;
 }
 
+
 //for loop, with if(arr[i] != 'null')
-let task_name = ["Math homework", "Chemistry test", "Physics assignment"];
-let due_date = ["2021/09/25/14:45:00", "09/31/2021/21:00:00", "09/21/2021/23:59:00"]; //convert AM and PM to 24 hour clock
-let urgency_list = []; 
+let task_name = ["Math homework", "Chemistry test", "Math assignment", "Physics assignment", "Speech analysis"];
+let due_date = ["2021/09/25/14:45:00", "2021/09/31/21:00:00", "2021/09/23/18:00:00", "2021/09/21/23:59:00", "2021/09/19/23:55:00"]; //convert AM and PM to 24 hour clock
+let urgency_list = [{timeDifference: 999999999}]; 
 
 if(task_name.length == due_date.length){ //if statement checks if the 2 lists are equal, otherwise we get runtime error
     for(let i = 0; i < due_date.length; i++){
         let task = taskAdder(task_name[i], due_date[i], timeDifference(due_date[i], currentTimeCalculator(Date.now())));
-        if(urgency_list.length < 1){
-            urgency_list.push(task);
-            console.log(urgency_list[0].timeDifference);
+        if(urgency_list.length < 2){
+            urgency_list.unshift(task);
         }
         else{
             if(task.timeDifference < urgency_list[0].timeDifference){
                 urgency_list.unshift(task);
-                console.log('yay1');
             }
             else{
                 for(let j = 0; j < urgency_list.length; j++){
-                    console.log('yay2');
-                    if(task.timeDifference > urgency_list[j].timeDifference){ 
+                    if(task.timeDifference > urgency_list[j].timeDifference){
+                        urgency_list.splice(j-1, 0, task); 
+                        if(task.timeDifference < urgency_list[j+1].timeDifference && task.timeDifference > urgency_list[j].timeDifference){
                         urgency_list.splice(j, 0, task);
                         break;
                         }
-                        console.log(urgency_list);
+                        break;
                     }
                 }
-            } console.log(urgency_list.length);
-        }  
-       
-    }
+            }
+        }
+    }  
+}
    
 else{
     console.log('Uneven list lengths')
 }
 
-//urgency.sort();
-for(let i = 0; i < urgency_list.length; i++){
-
-}
 console.log(urgency_list);
 
 
@@ -93,13 +89,24 @@ chrome.runtime.onInstalled.addListener((reason) => {
 });
 
 var reminderArr = ["date","blah blah", "time"];
-let reminderObj = {};
 
-chrome.storage.sync.set({reminderObj: reminderArr}, function() {
-    console.log('Value is set to ' + reminderArr);
+let globalValues = {
+    eventName: [],
+    date: [],
+    time: []
+};
+
+chrome.storage.sync.set(globalValues, function() {
+    console.log('Value is set to ' + globalValues);
 });
 
+function extractGlobals() {
+    chrome.storage.sync.get(['globalValues'], function(result) {
+        console.log('The values are ' + JSON.stringify(globalValues));
+    })
+}
 
+/*
 chrome.alarms.onAlarm.addListener(function(alarm) {
     console.log("Alarm Fired");
     chrome.storage.sync.get(['reminderObj'], function(result) {
@@ -107,3 +114,5 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
         alert(result.reminderObj);
         });
 })
+
+*/
