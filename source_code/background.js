@@ -35,11 +35,24 @@ function timeConverter(total_time_sec){ //call this function to convert into day
     total_time_sec = total_time_sec - (min * 60);   
     
     var sec = total_time_sec;
-
-    if(days < 2){
-        
+    
+    var wordDate = 'days';
+    var wordHour = 'hours';
+    var wordMin = 'minutes';
+    var wordSec = 'seconds';
+    if(date < 2){
+        wordDate = 'day';
     }
-    return date + " day(s) " + hour + " hour(s) " + min + " minute(s) " + sec + " second(s)"; 
+    if(hour < 2){
+        wordHour = 'hour';
+    }
+    if(min < 2){
+        wordMin = 'minute';
+    }
+    if(sec < 2){
+        wordSec = 'second';
+    }
+    return date + " " + wordDate + " " + hour + " " wordHour + " " + min + " " + wordMin + " " + sec + " " + wordSec; 
 }
 
 function taskAdder(task_name, due_date, time_difference){
