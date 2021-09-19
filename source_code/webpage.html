@@ -26,7 +26,6 @@
             <input type="text" id="taskName" placeholder="Enter task here">
             <label><textarea rows="5" cols="50" placeholder="Short description of task / To dos"></textarea></label> 
             <label for="hours">Estimated amount of hours to complete it: </label>
-            <input type="number" id="hours" min="1" max="10000">
             <label><input type="date" id="taskDate"></label>
             <label><input type="time" id="taskTime"></label>
             <label><input type="button" class="button" id="createTaskBtn" value="Create Task"></input></label>
@@ -34,11 +33,14 @@
 
 
         <table id="eventsTable">
+            <tbody id="tableTarget">
             <tr>
                 <th>Reminder Name</th>
-                <th>date</th>
-                <th>time</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Short description</th>
             </tr>
+            </tbody>
         </table>
     </body>
 </html>

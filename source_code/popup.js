@@ -30,7 +30,7 @@ alertButton.onclick = function showAlerts()
 
 //Setting an alarm as soon as the popup script runs
 
-alarmInfo = {
+var alarmInfo = {
     delayInMinutes: 1
 };
 chrome.alarms.create("firstTask", alarmInfo);
